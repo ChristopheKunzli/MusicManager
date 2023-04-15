@@ -102,5 +102,75 @@ namespace MusicManager
 
             return list;
         }
+
+        public User getUser(string email)
+        {
+            User user = null;
+
+            using (MySqlConnection connection = openConnection())
+            {
+                try
+                {
+                    string cmdText = "SELECT * FROM users WHERE users.EMAIL = @mail";
+                    MySqlCommand cmd = new MySqlCommand(cmdText, connection); ;
+                    cmd.Parameters.AddWithValue("@mail", email);
+
+                    connection.Open();
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = Convert.ToInt32(reader["ID"]);
+                            string mail = reader["EMAIL"].ToString();
+                            string password = reader["PASSWORD"].ToString();
+
+                            user = new User(mail, password, id);
+                            break;
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+            return user;
+        }
+
+        public void addUser(User user)
+        {
+            using (MySqlConnection connection = openConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    string cmdText = "INSERT INTO users (EMAIL, PASSWORD) VALUES (@mail, @pass)";
+                    MySqlCommand cmd = new MySqlCommand(cmdText, connection); ;
+
+                    cmd.Parameters.AddWithValue("@mail", user.Mail);
+                    cmd.Parameters.AddWithValue("@pass", user.Password);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
     }
 }

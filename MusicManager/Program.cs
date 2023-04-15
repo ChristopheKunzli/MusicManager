@@ -16,7 +16,16 @@ namespace MusicManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            LoginForm loginForm = new LoginForm();
+            Application.Run(loginForm);
+
+            if(loginForm.DialogResult == DialogResult.OK)
+            {
+                loginForm.Dispose();
+                Application.Run(new MainForm());
+            }
+
         }
     }
 }
