@@ -31,6 +31,9 @@ namespace MusicManager
 
             //Connect the BindingSource to the DataGridView
             dgvAlbums.DataSource = albumBindingSource;
+
+            //Hide the ID column
+            dgvAlbums.Columns[0].Visible = false;
         }
 
         private void dgvAlbums_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -54,6 +57,9 @@ namespace MusicManager
 
             //Connect the DataGridView and the binding source
             dgvTracks.DataSource = tracksBindingSource;
+
+            //Hide the ID column
+            dgvTracks.Columns[0].Visible = false;
         }
 
         private const string EMBED_TEMPLATE =

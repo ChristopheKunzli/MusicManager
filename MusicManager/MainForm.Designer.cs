@@ -46,6 +46,7 @@
             // 
             // dgvAlbums
             // 
+            this.dgvAlbums.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvAlbums.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlbums.Location = new System.Drawing.Point(349, 12);
             this.dgvAlbums.Name = "dgvAlbums";
@@ -64,6 +65,7 @@
             // 
             // dgvTracks
             // 
+            this.dgvTracks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvTracks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTracks.Location = new System.Drawing.Point(349, 252);
             this.dgvTracks.Name = "dgvTracks";

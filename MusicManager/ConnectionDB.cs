@@ -23,13 +23,14 @@ namespace MusicManager
         {
             List<Album> list = new List<Album>();
 
-            using(MySqlConnection connection = openConnection())
+            try
             {
-                try
+                using (MySqlConnection connection = openConnection())
                 {
+
                     string cmdText = "SELECT * FROM albums";
                     MySqlCommand cmd = new MySqlCommand(cmdText, connection); ;
-                    
+
                     connection.Open();
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -48,17 +49,15 @@ namespace MusicManager
 
                             list.Add(album);
                         }
-                    }
 
+                        connection.Close();
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             return list;
@@ -68,10 +67,11 @@ namespace MusicManager
         {
             List<Track> list = new List<Track>();
 
-            using (MySqlConnection connection = openConnection())
+            try
             {
-                try
+                using (MySqlConnection connection = openConnection())
                 {
+
                     string cmdText = $"SELECT * FROM tracks WHERE ALBUM_ID = {album.Id}";
                     MySqlCommand cmd = new MySqlCommand(cmdText, connection); ;
 
@@ -89,15 +89,12 @@ namespace MusicManager
                         }
                     }
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
                     connection.Close();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             return list;
@@ -107,10 +104,11 @@ namespace MusicManager
         {
             User user = null;
 
-            using (MySqlConnection connection = openConnection())
+            try
             {
-                try
+                using (MySqlConnection connection = openConnection())
                 {
+
                     string cmdText = "SELECT * FROM users WHERE users.EMAIL = @mail";
                     MySqlCommand cmd = new MySqlCommand(cmdText, connection); ;
                     cmd.Parameters.AddWithValue("@mail", email);
@@ -130,15 +128,13 @@ namespace MusicManager
                         }
                     }
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
                     connection.Close();
                 }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             return user;
@@ -146,10 +142,11 @@ namespace MusicManager
 
         public void addUser(User user)
         {
-            using (MySqlConnection connection = openConnection())
+            try
             {
-                try
+                using (MySqlConnection connection = openConnection())
                 {
+
                     connection.Open();
 
                     string cmdText = "INSERT INTO users (EMAIL, PASSWORD) VALUES (@mail, @pass)";
@@ -160,17 +157,14 @@ namespace MusicManager
 
                     cmd.ExecuteNonQuery();
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
                     connection.Close();
                 }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
-
     }
 }
