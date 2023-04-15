@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Configuration;
+
 namespace MusicManager
 {
     public class ConnectionDB
@@ -15,7 +17,7 @@ namespace MusicManager
 
         private MySqlConnection openConnection()
         {
-            string connectionString = "SERVER=localhost; PORT=3306; DATABASE=music; UID=music_viewer; PASSWORD=Pa$$w0rd";
+            string connectionString = ConfigurationManager.ConnectionStrings["Music"].ConnectionString;
             return new MySqlConnection(connectionString);
         }
 
