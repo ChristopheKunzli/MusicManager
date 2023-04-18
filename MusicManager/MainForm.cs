@@ -46,8 +46,15 @@ namespace MusicManager
             string url = grid.Rows[clickedRowIndex].Cells[3].Value.ToString();
 
             //Load the picture
-            albumPicture.Load(url);
-
+            try
+            {
+                albumPicture.Load(url);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //MessageBox.Show("Something went wrong while loading the album picture");
+            }
 
             //Find which album was clicked
             Album clickedAlbum = grid.CurrentRow.DataBoundItem as Album;
@@ -79,6 +86,29 @@ namespace MusicManager
 
             //webVideo.Url = new Uri(url);
             webVideo.DocumentText = string.Format(EMBED_TEMPLATE, url.Split('=')[1]);
+        }
+
+        private void cmdFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OFD = new OpenFileDialog
+            {
+                InitialDirectory = @"D:\",
+                Title = "Browse Text Files",
+
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                FilterIndex = 2,
+                RestoreDirectory = true,
+
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+            if (OFD.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(OFD.FileName);
+            }
         }
     }
 }

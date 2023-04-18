@@ -33,10 +33,13 @@
             this.albumPicture = new System.Windows.Forms.PictureBox();
             this.dgvTracks = new System.Windows.Forms.DataGridView();
             this.webVideo = new System.Windows.Forms.WebBrowser();
+            this.cmdFile = new System.Windows.Forms.Button();
+            this.fileSystemWatcher2 = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbums)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher2)).BeginInit();
             this.SuspendLayout();
             // 
             // fileSystemWatcher1
@@ -81,11 +84,27 @@
             this.webVideo.Size = new System.Drawing.Size(331, 233);
             this.webVideo.TabIndex = 3;
             // 
+            // cmdFile
+            // 
+            this.cmdFile.Location = new System.Drawing.Point(94, 565);
+            this.cmdFile.Name = "cmdFile";
+            this.cmdFile.Size = new System.Drawing.Size(75, 23);
+            this.cmdFile.TabIndex = 4;
+            this.cmdFile.Text = "File";
+            this.cmdFile.UseVisualStyleBackColor = true;
+            this.cmdFile.Click += new System.EventHandler(this.cmdFile_Click);
+            // 
+            // fileSystemWatcher2
+            // 
+            this.fileSystemWatcher2.EnableRaisingEvents = true;
+            this.fileSystemWatcher2.SynchronizingObject = this;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 722);
+            this.Controls.Add(this.cmdFile);
             this.Controls.Add(this.webVideo);
             this.Controls.Add(this.dgvTracks);
             this.Controls.Add(this.albumPicture);
@@ -97,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbums)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -108,6 +128,8 @@
         private System.Windows.Forms.PictureBox albumPicture;
         private System.Windows.Forms.DataGridView dgvTracks;
         private System.Windows.Forms.WebBrowser webVideo;
+        private System.Windows.Forms.Button cmdFile;
+        private System.IO.FileSystemWatcher fileSystemWatcher2;
     }
 }
 
