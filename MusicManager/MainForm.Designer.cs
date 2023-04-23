@@ -28,24 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.dgvAlbums = new System.Windows.Forms.DataGridView();
             this.albumPicture = new System.Windows.Forms.PictureBox();
             this.dgvTracks = new System.Windows.Forms.DataGridView();
             this.webVideo = new System.Windows.Forms.WebBrowser();
             this.cmdFile = new System.Windows.Forms.Button();
-            this.fileSystemWatcher2 = new System.IO.FileSystemWatcher();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbums)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // fileSystemWatcher1
-            // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
             // 
             // dgvAlbums
             // 
@@ -94,11 +85,6 @@
             this.cmdFile.UseVisualStyleBackColor = true;
             this.cmdFile.Click += new System.EventHandler(this.cmdFile_Click);
             // 
-            // fileSystemWatcher2
-            // 
-            this.fileSystemWatcher2.EnableRaisingEvents = true;
-            this.fileSystemWatcher2.SynchronizingObject = this;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,24 +98,19 @@
             this.Name = "MainForm";
             this.Text = "Music Manager";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbums)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.DataGridView dgvAlbums;
         private System.Windows.Forms.PictureBox albumPicture;
         private System.Windows.Forms.DataGridView dgvTracks;
         private System.Windows.Forms.WebBrowser webVideo;
         private System.Windows.Forms.Button cmdFile;
-        private System.IO.FileSystemWatcher fileSystemWatcher2;
     }
 }
 
