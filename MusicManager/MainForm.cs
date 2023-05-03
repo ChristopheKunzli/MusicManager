@@ -114,8 +114,9 @@ namespace MusicManager
                 string selectedFileName = Path.GetFileName(selectedFilePath);
 
                 string destinationFilePath = Path.Combine(dest, selectedFileName);
-                
+
                 File.Copy(selectedFilePath, destinationFilePath);
+                //albumPicture.Load(destinationFilePath); //This was used to test 
             }
         }
     }
