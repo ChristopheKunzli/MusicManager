@@ -19,16 +19,16 @@ namespace MusicManager
 
             //Open the login form
             LoginForm loginForm = new LoginForm();
-            Application.Run(loginForm);
+            //Application.Run(loginForm);
 
             //Check if user did login, then destroy the login form
             DialogResult result = loginForm.DialogResult;
             loginForm.Dispose();
 
             //Open main form only if user is logged in
-            if(result == DialogResult.OK)
+            //if(result == DialogResult.OK)
             {
-                Application.Run(new MainForm());
+                Application.Run(new searchAndStats());
             }
 
         }
